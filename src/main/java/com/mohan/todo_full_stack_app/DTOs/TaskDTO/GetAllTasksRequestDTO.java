@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateTaskRequestDTO {
+public class GetAllTasksRequestDTO {
     private long userId;
-    private String taskName;
-    private String taskDescription;
 }
+
+
