@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Primary
 public class TaskServiceImpl implements  TaskService{
@@ -88,5 +90,11 @@ public class TaskServiceImpl implements  TaskService{
         if(task.getUser().getId() != userId) throw new Exception("MileStone is not valid");
         taskMilestoneRepository.delete(milestone);
         return milestone;
+    }
+
+    @Override
+    public List<Task> getAllTasks(long userId) throws Exception {
+        User user = userRepository.findById(userId).orElseThrow(()-> new Exception("User Not Found"));
+        return taskRepository.findByUser_Id(userId);
     }
 }

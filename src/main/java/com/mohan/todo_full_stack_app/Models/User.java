@@ -1,9 +1,7 @@
 package com.mohan.todo_full_stack_app.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -11,8 +9,11 @@ import lombok.Data;
 @Table(name="users")
 public class User extends BaseModel {
     private String userName;
+    @Column(unique = true)
     private String email;
+    @JsonIgnore
     private String currentPassword;
     @Enumerated(value = EnumType.STRING)
     private UserStatus status;
 }
+

@@ -36,6 +36,7 @@ public class UserServiceImpl implements  UserService{
        user.setEmail(userEmail);
        String hashPassword = encoder.encode(userPassword);
        user.setCurrentPassword(hashPassword);
+       user.setStatus(UserStatus.ACTIVE);
        userRepository.save(user);
         return user;
     }
